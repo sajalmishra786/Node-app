@@ -4,7 +4,7 @@
   "type":"commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node app.cjs",
     "lint": "eslint .",
     "test": "jest"
   },
