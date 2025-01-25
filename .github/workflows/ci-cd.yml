@@ -106,6 +106,4 @@ jobs:
           cd /home/ubuntu/node-app
           git pull origin main
           npm install
-          npm run build
-          pm2 restart all
         EOF
