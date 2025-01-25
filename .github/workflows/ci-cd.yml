@@ -29,6 +29,9 @@ jobs:
     # Install dependencies
     - name: Install dependencies
       run: npm ci
+      
+    - name: Run npm audit
+      run: npm audit --audit-level=high
 
     # Run linter
     - name: Run ESLint
