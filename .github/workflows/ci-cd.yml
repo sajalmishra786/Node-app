@@ -129,8 +129,8 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
         ssh ubuntu@${{ secrets.PRODUCTION_SERVER_IP }} <<EOF
-          docker pull sajalmishra786/node-app:latest
-          docker stop node-app || true
-          docker rm node-app || true
-          docker run -d --name node-app -p 3000:3000 sajalmishra786/node-app:latest
+          sudo docker pull sajalmishra786/node-app:latest
+          sudo docker stop node-app || true
+          sudo docker rm node-app || true
+          sudo docker run -d --name node-app -p 3000:3000 sajalmishra786/node-app:latest
         EOF
