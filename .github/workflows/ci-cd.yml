@@ -103,7 +103,7 @@ jobs:
   deploy-production:
     name: Deploy to Production
     runs-on: ubuntu-latest
-    needs: build-and-test
+    needs: build-and-push-docker-image
     if: github.ref == 'refs/heads/main'
 
     steps:
@@ -129,7 +129,8 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
         ssh ubuntu@${{ secrets.PRODUCTION_SERVER_IP }} <<EOF
-          cd /home/ubuntu/node-app
-          git pull origin main
-          npm install
+          docker pull sajalmishra786/node-app:latest
+          docker stop node-app || true
+          docker rm node-app || true
+          docker run -d --name node-app -p 3000:3000 sajalmishra786/node-app:latest
         EOF
