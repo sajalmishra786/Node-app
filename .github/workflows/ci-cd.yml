@@ -103,7 +103,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
         ssh ubuntu@${{ secrets.PRODUCTION_SERVER_IP }} <<EOF
-          cd /homee/ubuntu/node-app
+          cd /home/ubuntu/node-app
           git pull origin main
           npm install
           npm run build
